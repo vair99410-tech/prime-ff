@@ -1,86 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Prime FF Gaming</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 body{
 margin:0;
 font-family:Arial;
-background:#020617;
 color:white;
 text-align:center;
+
+background:url("https://wallpapercave.com/wp/wp5128415.jpg");
+background-size:cover;
 }
 
-/* Header */
+/* header */
 
 header{
 background:black;
-padding:15px;
-font-size:25px;
-font-weight:bold;
+padding:10px;
 color:red;
 }
 
-/* Menu */
-
-nav{
-margin-top:10px;
-}
+/* menu */
 
 nav a{
 color:white;
 margin:10px;
 text-decoration:none;
-font-size:18px;
 }
 
-/* Hero */
+/* box */
 
-.hero{
-padding:60px;
-background:linear-gradient(90deg,red,orange);
-}
-
-.hero h1{
-font-size:35px;
-}
-
-/* Button */
-
-button{
-background:red;
-border:none;
-padding:12px 25px;
-color:white;
-font-size:18px;
+.box{
+background:rgba(0,0,0,0.7);
+margin:20px;
+padding:20px;
 border-radius:10px;
 }
 
-/* Video */
+/* button */
 
-.video{
-margin-top:30px;
+button{
+background:red;
+color:white;
+border:none;
+padding:10px 20px;
 }
 
-/* Card */
+/* login */
 
-.card{
-background:#111827;
-margin:20px;
-padding:20px;
-border-radius:15px;
+#login{
+display:none;
 }
 
-/* Footer */
+/* admin */
 
-footer{
-background:black;
-padding:20px;
-margin-top:40px;
+#admin{
+display:none;
+}
+
+/* marquee */
+
+marquee{
+background:red;
+padding:5px;
 }
 
 </style>
@@ -90,50 +78,174 @@ margin-top:40px;
 <body>
 
 <header>
-🎮 Prime FF Gaming
+
+<h2>Prime FF Gaming</h2>
+
 <nav>
-<a href="#">Home</a>
-<a href="#">Videos</a>
-<a href="#">Contact</a>
+
+<a href="#" onclick="home()">Home</a>
+<a href="#" onclick="showLogin()">Login</a>
+<a href="#" onclick="showAdmin()">Admin</a>
+
 </nav>
+
 </header>
 
-<div class="hero">
 
-<h1>Welcome To Prime FF Gaming</h1>
+<marquee>
+Welcome To Prime FF Gaming Official Website
+</marquee>
 
-<p>Funny Free Fire Gameplay | Viral Videos | Shorts</p>
 
-<button>Subscribe</button>
+
+<div class="box">
+
+<h3>Visitor Counter</h3>
+
+<p id="visit"></p>
 
 </div>
 
 
-<div class="card">
 
-<h2>Latest Video</h2>
+<div class="box">
 
-<iframe width="320" height="200"
+<h3>Latest Video</h3>
+
+<iframe width="300" height="200"
 src="https://www.youtube.com/embed/YOURVIDEOID">
 </iframe>
 
 </div>
 
 
-<div class="card">
 
-<h2>About Channel</h2>
+<div class="box">
 
-<p>This website for Prime FF Gaming YouTube Channel</p>
+<h3>Comment</h3>
+
+<input id="c">
+
+<button onclick="addComment()">Send</button>
+
+<p id="show"></p>
 
 </div>
 
 
-<footer>
 
-Prime FF Gaming © 2026
+<div id="login" class="box">
 
-</footer>
+<h3>Login</h3>
+
+<input id="user" placeholder="user">
+
+<br><br>
+
+<input id="pass" placeholder="pass">
+
+<br><br>
+
+<button onclick="login()">Login</button>
+
+</div>
+
+
+
+<div id="admin" class="box">
+
+<h3>Admin Panel</h3>
+
+<p>Welcome Admin</p>
+
+<button onclick="alert('Admin setting')">
+Setting
+</button>
+
+</div>
+
+
+
+<div class="box">
+
+<h3>Subscribe</h3>
+
+<a href="https://youtube.com">
+
+<button>Subscribe Channel</button>
+
+</a>
+
+</div>
+
+
+
+<script>
+
+/* visitor */
+
+let v = localStorage.getItem("v")
+
+if(v==null){v=1}else{v++}
+
+localStorage.setItem("v",v)
+
+document.getElementById("visit").innerHTML=v
+
+
+
+/* comment */
+
+function addComment(){
+
+let c=document.getElementById("c").value
+
+document.getElementById("show").innerHTML=c
+
+}
+
+
+
+/* login */
+
+function showLogin(){
+
+document.getElementById("login").style.display="block"
+
+}
+
+
+
+function login(){
+
+let u=document.getElementById("user").value
+
+let p=document.getElementById("pass").value
+
+if(u=="admin" && p=="1234"){
+
+alert("login ok")
+
+document.getElementById("admin").style.display="block"
+
+}else{
+
+alert("wrong")
+
+}
+
+}
+
+
+
+function showAdmin(){
+
+document.getElementById("admin").style.display="block"
+
+}
+
+
+</script>
 
 </body>
 </html>
